@@ -1,4 +1,4 @@
-import ExpenseItems from './components/ExpenseItems'
+import Expenses from './components/Expenses'; 
 import './App.css'
 
 function App() {
@@ -26,16 +26,7 @@ function App() {
   return (    
     <div className='App-header'>
       <h2>Lets Get Started!</h2>
-      <ExpenseItems
-        title={expenses[0].title}
-        amount={expenses[0].amount}
-        date={expenses[0].date}
-      ></ExpenseItems>
-      <ExpenseItems
-        title={expenses[1].title}
-        amount={expenses[1].amount}
-        date={expenses[1].date}
-      ></ExpenseItems>
+      <Expenses items={expenses}/>
     </div>
   );
 }

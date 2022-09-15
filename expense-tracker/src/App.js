@@ -1,4 +1,5 @@
-import Expenses from './components/Expenses'; 
+import Expenses from './components/Expenses/Expenses'; 
+import NewExpense from './components/NewExpense/NewExpense';
 import './App.css'
 
 function App() {
@@ -23,9 +24,14 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const inputFormData = (receivedExpenses) => {
+    console.log(receivedExpenses);
+  }
+
   return (    
     <div className='App-header'>
-      <h2>Lets Get Started!</h2>
+      <NewExpense onFormData={inputFormData}/>
       <Expenses items={expenses}/>
     </div>
   );

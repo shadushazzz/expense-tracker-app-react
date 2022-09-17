@@ -50,7 +50,7 @@ const NewExpenseForm = (props) => {
               <label>Date</label>
               <input type='date' min='2017-09-01' max='2023-09-01' value={enteredDate} onChange={onDateChange}></input>
             </div>
-            <button onClick={closeExpense}>Close</button>
+            <button type="button" onClick={closeExpense}>Close</button>
             <button type="submit">Add Expense</button>
           </div>
         </form>

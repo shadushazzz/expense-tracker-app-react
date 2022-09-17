@@ -5,6 +5,7 @@ const NewExpenseForm = (props) => {
   const [ enteredTitle , setEnteredTitle ] = useState('');
   const [ enteredAmount , setEnteredAmount ] = useState('');
   const [ enteredDate , setEnteredDate ] = useState('');
+  const [ closeButton , setClosedButton ] = useState()
 
   const onTitleChange = (e) => {
     setEnteredTitle(e.target.value)
@@ -29,6 +30,11 @@ const NewExpenseForm = (props) => {
    setEnteredTitle('');
   }
 
+  const closeExpense = () => {
+    setClosedButton(false)
+    props.closedButton(closeButton);
+  }
+
   return (    
         <form onSubmit={submitHandler}>
           <div className="new-expense__controls">
@@ -44,6 +50,7 @@ const NewExpenseForm = (props) => {
               <label>Date</label>
               <input type='date' min='2017-09-01' max='2023-09-01' value={enteredDate} onChange={onDateChange}></input>
             </div>
+            <button type="button" onClick={closeExpense}>Close</button>
             <button type="submit">Add Expense</button>
           </div>
         </form>

@@ -5,7 +5,7 @@ import ExpensesFilter from './ExpensesFilter';
 import Card from './Card';
 
 const Expenses = (props) => {
-  const [filterYear, setFilterYear] = useState('2022');
+  const [filterYear, setFilterYear] = useState('2021');
 
   const receivedFilterYear = ( receivedYear ) => {
     setFilterYear(receivedYear);
@@ -15,16 +15,22 @@ const Expenses = (props) => {
  
   return (
   <Card className='expenses'>
-    <ExpensesFilter selected={filterYear} onExpenseFilterChange={receivedFilterYear} />
-    {
-      filteredList.map( item => 
-        <ExpenseItems
-        title={item.title}
-        amount={item.amount}
-        date={item.date} />
-      )
-    }    
-  </Card>
+      <ExpensesFilter selected={filterYear} onExpenseFilterChange={receivedFilterYear} />
+      {
+        filteredList.length === 0 ? (
+          <h2 className='expenses-list__fallback'>No expenses found!</h2>
+        ) :
+          (
+            filteredList.map(item =>
+              <ExpenseItems
+                key={item.id}
+                title={item.title}
+                amount={item.amount}
+                date={item.date} />
+            )
+          )
+      }
+    </Card>
   )
 }
 

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import NewExpenseForm from "./NewExpenseForm";
 import './NewExpense.css';
 
 
 const NewExpense = (props) => {
+
   const receivedFormData = (receivedExpenseData) => {
     const expenseData = {
       ...receivedExpenseData, 
@@ -12,9 +13,23 @@ const NewExpense = (props) => {
     props.onFormData(expenseData);
   }
 
+  const [ addExpense, setAddExpense ] = useState(false);
+
+  const addExpenseButton = () => {
+    setAddExpense(true);
+  }
+
+  const closeExpense = (receivedCloseValue ) => {
+   setAddExpense(receivedCloseValue);
+  }
+  
   return (
     <div className="new-expense">
-      <NewExpenseForm formData={receivedFormData}/>
+     <button hidden={addExpense} onClick={addExpenseButton}>New Expense</button>
+     {
+     addExpense ?
+      <NewExpenseForm closedButton={closeExpense} formData={receivedFormData}/> : ''
+     }
     </div>
   )
 }
